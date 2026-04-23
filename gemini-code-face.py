@@ -5,22 +5,19 @@ import plotly.graph_objects as go
 import sys
 
 # --- 終極避錯導入法 ---
-try:
-    import mediapipe as mp
-    # 嘗試用不同路徑抓取 face_mesh，繞過 mp.solutions 報錯
-    try:
-        import mediapipe.python.solutions.face_mesh as fm
-        import mediapipe.python.solutions.drawing_utils as du
-        mp_face_mesh = fm
-        mp_drawing = du
-    except ImportError:
-        from mediapipe.solutions import face_mesh as fm
-        from mediapipe.solutions import drawing_utils as du
-        mp_face_mesh = fm
-        mp_drawing = du
-except Exception as e:
-    st.error(f"AI 引擎初始化失敗: {e}")
-    st.stop()
+import streamlit as st
+import numpy as np
+import PIL.Image as Image
+import plotly.graph_objects as go
+
+# 這種寫法是目前 Streamlit 雲端最穩定的導入方式
+import mediapipe as mp
+from mediapipe.solutions import face_mesh as mp_face_mesh
+from mediapipe.solutions import drawing_utils as mp_drawing
+
+# --- 加上一段偵錯文字，讓我們知道它成功了沒 ---
+if mp_face_mesh:
+    st.sidebar.success("AI 引擎載入成功！")
 
 st.title("AI 3D 人臉掃描器")
 
