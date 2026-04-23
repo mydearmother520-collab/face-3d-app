@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-# 告訴 OpenCV 不要去亂抓視窗驅動
+# 告訴 OpenCV 不要去嘗試調用視窗驅動，這能增加穩定性
 os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 
 import cv2
