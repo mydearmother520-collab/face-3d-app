@@ -1,6 +1,6 @@
 streamlit
-mediapipe
+mediapipe==0.10.11
+opencv-python-headless
 plotly
 pillow
 numpy
-opencv-python-headless
