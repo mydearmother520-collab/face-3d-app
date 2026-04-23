@@ -1,7 +1,12 @@
 [requirements.txt](https://github.com/user-attachments/files/27015128/requirements.txt)
-[gemini-code-face.py](https://github.com/user-attachments/files/27015144/gemini-code-face.py)import os
-import sys
+[gemini-code-face.py](https://github.com/user-attachments/files/27015144/gemini-code-face.py)
 import streamlit as st
+import mediapipe as mp
+import numpy as np
+import PIL.Image as Image
+import plotly.graph_objects as go
+
+mp_face_mesh = mp.solutions.face_mesh
 
 # 1. 取得這支程式所在的資料夾
 base_path = os.path.dirname(os.path.abspath(__file__))
