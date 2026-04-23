@@ -1,23 +1,12 @@
 import streamlit as st
-import numpy as np
-import PIL.Image as Image
-import plotly.graph_objects as go
-import sys
-
-# --- 終極避錯導入法 ---
-import streamlit as st
-import numpy as np
-import PIL.Image as Image
-import plotly.graph_objects as go
-
-# 這種寫法是目前 Streamlit 雲端最穩定的導入方式
 import mediapipe as mp
-from mediapipe.solutions import face_mesh as mp_face_mesh
-from mediapipe.solutions import drawing_utils as mp_drawing
+import numpy as np
+import PIL.Image as Image
+import plotly.graph_objects as go
 
-# --- 加上一段偵錯文字，讓我們知道它成功了沒 ---
-if mp_face_mesh:
-    st.sidebar.success("AI 引擎載入成功！")
+# 標配定義
+mp_face_mesh = mp.solutions.face_mesh
+mp_drawing = mp.solutions.drawing_utils
 
 st.title("AI 3D 人臉掃描器")
 
