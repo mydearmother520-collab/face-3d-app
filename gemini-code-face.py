@@ -1,20 +1,12 @@
 import streamlit as st
+import mediapipe as mp
 import numpy as np
-import PIL.Image as Image
+from PIL import Image
 import plotly.graph_objects as go
 
-# --- 終極防錯導入法：直接從底層模組抓取 ---
-try:
-    import mediapipe as mp
-    # 繞過 mp.solutions，直接導入 python 實作層
-    from mediapipe.python.solutions import face_mesh as mp_face_mesh
-    from mediapipe.python.solutions import drawing_utils as mp_drawing
-    from mediapipe.python.solutions import drawing_styles as mp_drawing_styles
-except ImportError:
-    # 備用方案：如果上面失敗，嘗試標準導入
-    import mediapipe.solutions.face_mesh as mp_face_mesh
-    import mediapipe.solutions.drawing_utils as mp_drawing
-# --------------------------------------
+# 標準導入
+mp_face_mesh = mp.solutions.face_mesh
+mp_drawing = mp.solutions.drawing_utils
 
 st.title("AI 3D 人臉掃描器")
 
