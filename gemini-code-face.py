@@ -1,6 +1,12 @@
-import os
-import sys
 import streamlit as st
+import mediapipe as mp
+import numpy as np
+import PIL.Image as Image
+import plotly.graph_objects as go
+
+# --- 只要這兩行，雲端就會自動處理 ---
+mp_face_mesh = mp.solutions.face_mesh
+mp_drawing = mp.solutions.drawing_utils
 
 # 1. 取得這支程式所在的資料夾
 base_path = os.path.dirname(os.path.abspath(__file__))
