@@ -1,9 +1,13 @@
 import streamlit as st
+import os
+
+# 強制在導入 cv2 之前設定環境變數，避開驅動報錯
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
+
 import mediapipe as mp
 import numpy as np
 from PIL import Image
 import plotly.graph_objects as go
-import os
 
 # 標準導入
 mp_face_mesh = mp.solutions.face_mesh
