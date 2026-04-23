@@ -4,23 +4,23 @@ import PIL.Image as Image
 import plotly.graph_objects as go
 import sys
 
-# --- 超強規避初始化開始 ---
+# --- 終極避錯導入法 ---
 try:
     import mediapipe as mp
-    # 如果 mp.solutions 抓不到，直接從底層模組抓
+    # 嘗試用不同路徑抓取 face_mesh，繞過 mp.solutions 報錯
     try:
-        from mediapipe.python.solutions import face_mesh as fm
-        from mediapipe.python.solutions import drawing_utils as du
+        import mediapipe.python.solutions.face_mesh as fm
+        import mediapipe.python.solutions.drawing_utils as du
         mp_face_mesh = fm
         mp_drawing = du
-    except:
-        # 萬一還是抓不到，用最後的手段
-        import mediapipe.python.solutions.face_mesh as fm
+    except ImportError:
+        from mediapipe.solutions import face_mesh as fm
+        from mediapipe.solutions import drawing_utils as du
         mp_face_mesh = fm
+        mp_drawing = du
 except Exception as e:
-    st.error(f"AI 模組載入失敗: {e}")
+    st.error(f"AI 引擎初始化失敗: {e}")
     st.stop()
-# --- 超強規避初始化結束 ---
 
 st.title("AI 3D 人臉掃描器")
 
