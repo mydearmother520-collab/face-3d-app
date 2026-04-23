@@ -1,9 +1,10 @@
 import streamlit as st
 import os
 
-# 強制在導入 cv2 之前設定環境變數，避開驅動報錯
+# 告訴 OpenCV 不要去亂抓視窗驅動
 os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 
+import cv2
 import mediapipe as mp
 import numpy as np
 from PIL import Image
