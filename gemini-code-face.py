@@ -3,6 +3,7 @@ import mediapipe as mp
 import numpy as np
 from PIL import Image
 import plotly.graph_objects as go
+import os
 
 # 標準導入
 mp_face_mesh = mp.solutions.face_mesh
